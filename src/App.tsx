@@ -120,13 +120,13 @@ export default function DemoSite() {
             <a href="#pricing" className="hover:opacity-70 !text-black no-underline">Pricing</a>
             <a href="#contact" className="hover:opacity-70 !text-black no-underline">Contact</a>
           </nav>
-          <div className="flex items-center gap-2">
+          {/* <div className="flex items-center gap-2">
             <Button asChild className="rounded-2xl">
               <a href="#contact" aria-label="Book a free consultation" className="!text-white no-underline">
                 Free 15‑min Consult <ArrowRight className="inline w-4 h-4 ml-1" />
               </a>
             </Button>
-          </div>
+          </div> */}
         </div>
       </header>
 
@@ -148,7 +148,8 @@ export default function DemoSite() {
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Button asChild size="lg" className="rounded-2xl">
-                  <a href="#contact" className="!text-white no-underline">Book Free 15‑min Call</a>
+                  <a href="https://cal.com/jashanpreet-singh-jq1sku/30min" target="_blank"
+  rel="noopener noreferrer" className="!text-white no-underline">Book Free 30‑min Call</a>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="rounded-2xl">
                   <a href="#pricing" className="!text-black no-underline">See Pricing</a>
@@ -340,15 +341,18 @@ export default function DemoSite() {
                     <textarea id="message" name="message" rows={4} placeholder="Briefly describe your systems and goals" className="border rounded-xl p-3" />
                   </div>
                   <div className="flex flex-wrap gap-3">
+                     <a href="https://cal.com/jashanpreet-singh-jq1sku/30min" target="_blank" rel="noopener noreferrer">
                     <Button className="rounded-2xl" type="button">
-                      <Calendar className="w-4 h-4 mr-2" /> Book 15‑min Call
-                    </Button>
+                      <Calendar className="w-4 h-4 mr-2" /> Book 30‑min Call
+                    </Button></a>
+                    <a href="mailto:jashan@automexa.ca">
                     <Button className="rounded-2xl" type="button">
                       <Mail className="w-4 h-4 mr-2" /> Email Me
-                    </Button>
+                    </Button></a>
+                    <a href="tel:+14379730380">
                     <Button className="rounded-2xl" type="button">
-                      <Phone className="w-4 h-4 mr-2" /> (437) 973‑0380
-                    </Button>
+                      <Phone className="w-4 h-4 mr-2" /> (437) XXX‑0380
+                    </Button></a>
                   </div>
                   <p className="text-xs text-slate-500">By contacting me, you agree to be reached at the details provided about your inquiry.</p>
                 </form>
