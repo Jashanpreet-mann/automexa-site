@@ -349,10 +349,10 @@ export default function DemoSite() {
                     <Button className="rounded-2xl" type="button">
                       <Mail className="w-4 h-4 mr-2" /> Email Me
                     </Button></a>
-                    <a href="tel:+14379730380">
+                    {/* <a href="tel:+14379730380">
                     <Button className="rounded-2xl" type="button">
                       <Phone className="w-4 h-4 mr-2" /> (437) XXX‑0380
-                    </Button></a>
+                    </Button></a> */}
                   </div>
                   <p className="text-xs text-slate-500">By contacting me, you agree to be reached at the details provided about your inquiry.</p>
                 </form>
