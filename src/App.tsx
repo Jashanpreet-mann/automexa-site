@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Check, ArrowRight, Zap, Shield, BarChart3, Cloud, Cpu, Mail, Phone, Calendar, Link as LinkIcon, Cable } from "lucide-react";
+import { Check, ArrowRight, Zap, Shield, BarChart3, Cloud, Cpu, Mail, Phone, Calendar, Link as LinkIcon, Cable, SendHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import emailjs from "@emailjs/browser";
 
 // TailwindCSS + shadcn/ui + Framer Motion + lucide-react
 // Single-file React component
@@ -108,6 +109,35 @@ const pricing = [
 ];
 
 export default function DemoSite() {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSending, setIsSending] = useState(false);
+  const [status, setStatus] = useState("");
+
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSending(true);
+
+    emailjs
+      .sendForm(
+        "service_604oany", // 🔹 replace with your EmailJS service ID
+        "template_g4yjiqd", // 🔹 replace with your EmailJS template ID
+        formRef.current!,
+        "SUON2pQz25C-uMsUj" // 🔹 replace with your EmailJS public key
+      )
+      .then(
+        () => {
+          setStatus("✅ Message sent successfully!");
+          setIsSending(false);
+          formRef.current?.reset();
+        },
+        (error) => {
+          console.error(error);
+          setStatus("❌ Failed to send. Please try again.");
+          setIsSending(false);
+        }
+      );
+  };
+
   return (
     <div className="min-h-screen bg-white text-slate-900 text-black">
       {/* Header */}
@@ -327,7 +357,7 @@ export default function DemoSite() {
           <div className="mt-8 grid gap-6">
             <Card className="rounded-2xl">
               <CardContent className="p-6">
-                <form className="grid gap-4">
+                <form ref={formRef} onSubmit={sendEmail} className="grid gap-4">
                   <div className="grid gap-2">
                     <label htmlFor="name" className="text-sm font-medium">Name</label>
                     <input id="name" name="name" placeholder="Your name" className="border rounded-xl p-3" />
@@ -341,19 +371,20 @@ export default function DemoSite() {
                     <textarea id="message" name="message" rows={4} placeholder="Briefly describe your systems and goals" className="border rounded-xl p-3" />
                   </div>
                   <div className="flex flex-wrap gap-3">
+                    <Button className="rounded-2xl" type="submit" disabled = {isSending}>
+                      <SendHorizontal className="w-4 h-4 mr-2" /> {isSending ? "Sending..." : "Send"}
+                    </Button>
                      <a href="https://cal.com/jashanpreet-singh-jq1sku/30min" target="_blank" rel="noopener noreferrer">
                     <Button className="rounded-2xl" type="button">
                       <Calendar className="w-4 h-4 mr-2" /> Book 30‑min Call
                     </Button></a>
-                    <a href="mailto:jashan@automexa.ca">
+                    <a href="mailto:info@automexa.ca">
                     <Button className="rounded-2xl" type="button">
                       <Mail className="w-4 h-4 mr-2" /> Email Me
                     </Button></a>
-                    {/* <a href="tel:+14379730380">
-                    <Button className="rounded-2xl" type="button">
-                      <Phone className="w-4 h-4 mr-2" /> (437) XXX‑0380
-                    </Button></a> */}
                   </div>
+                    {status && <p className="text-sm mt-2">{status}</p>}
+
                   <p className="text-xs text-slate-500">By contacting me, you agree to be reached at the details provided about your inquiry.</p>
                 </form>
               </CardContent>
