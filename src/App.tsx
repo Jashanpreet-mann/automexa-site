@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Check, ArrowRight, Zap, Shield, BarChart3, Cloud, Cpu, Mail, Phone, Calendar, Link as LinkIcon, Cable, SendHorizontal } from "lucide-react";
+import { Check, Zap, Shield, BarChart3, Cloud, Mail, Calendar, Link as LinkIcon, Cable, SendHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import emailjs from "@emailjs/browser";
