@@ -166,7 +166,7 @@ export default function DemoSite() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
-              Tired of Tired of IT headaches holding your small business back?
+              Tired of IT headaches holding your small business back?
               </h1>
 
               <h2 className="text-4xl sm:text-2xl font-bold tracking-tight">
@@ -360,15 +360,15 @@ export default function DemoSite() {
                 <form ref={formRef} onSubmit={sendEmail} className="grid gap-4">
                   <div className="grid gap-2">
                     <label htmlFor="name" className="text-sm font-medium">Name</label>
-                    <input id="name" name="name" placeholder="Your name" className="border rounded-xl p-3" />
+                    <input id="name" name="name" placeholder="Your name" className="border rounded-xl p-3 required" />
                   </div>
                   <div className="grid gap-2">
                     <label htmlFor="email" className="text-sm font-medium">Email</label>
-                    <input id="email" name="email" type="email" placeholder="you@company.com" className="border rounded-xl p-3" />
+                    <input id="email" name="email" type="email" placeholder="you@company.com" className="border rounded-xl p-3 required" />
                   </div>
                   <div className="grid gap-2">
                     <label htmlFor="message" className="text-sm font-medium">What do you need help with?</label>
-                    <textarea id="message" name="message" rows={4} placeholder="Briefly describe your systems and goals" className="border rounded-xl p-3" />
+                    <textarea id="message" name="message" rows={4} placeholder="Briefly describe your systems and goals" className="border rounded-xl p-3 required" />
                   </div>
                   <div className="flex flex-wrap gap-3">
                     <Button className="rounded-2xl" type="submit" disabled = {isSending}>
